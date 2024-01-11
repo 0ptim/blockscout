@@ -8,6 +8,8 @@ services:
       - 'host.docker.internal:host-gateway'
     volumes:
       - "../proxy:/etc/nginx/templates"
+      - "../proxy/fullchain.pem:/etc/nginx/ssl/fullchain.pem"
+      - "../proxy/privkey.pem:/etc/nginx/ssl/privkey.pem"
     environment:
       BACK_PROXY_PASS: ${BACK_PROXY_PASS:-http://backend:4000}
       FRONT_PROXY_PASS: ${FRONT_PROXY_PASS:-http://frontend:3000}
@@ -15,3 +17,4 @@ services:
       - 80:80
       - 8080:8080
       - 8081:8081
+      - 443:443

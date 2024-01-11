@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   backend:
@@ -6,11 +6,13 @@ services:
     pull_policy: always
     restart: always
     stop_grace_period: 5m
-    container_name: 'backend'
-    command: sh -c "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
+    container_name: "backend"
+    command: sh -c "./sync-check.sh && bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
     extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - "host.docker.internal:host-gateway"
     env_file:
-      -  ../envs/common-blockscout.env
+      - ../envs/common-blockscout.env
     volumes:
       - ./logs/:/app/logs/
+      - ../images/:/app/lib/block_scout_web-5.3.1/priv/static/images/custom
+      - ./sync-check.sh:/app/sync-check.sh

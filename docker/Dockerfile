@@ -7,7 +7,7 @@ ENV MIX_ENV="prod"
 RUN apk --no-cache --update add alpine-sdk gmp-dev automake libtool inotify-tools autoconf python3 file gcompat
 
 RUN set -ex && \
-    apk --update add libstdc++ curl ca-certificates gcompat
+  apk --update add libstdc++ curl ca-certificates gcompat
 
 ARG CACHE_EXCHANGE_RATES_PERIOD
 ARG API_V1_READ_METHODS_DISABLED
@@ -47,12 +47,12 @@ RUN mix compile && npm install npm@latest
 
 # Add blockscout npm deps
 RUN cd apps/block_scout_web/assets/ && \
-    npm install && \
-    npm run deploy && \
-    cd /app/apps/explorer/ && \
-    npm install && \
-    apk update && \
-    apk del --force-broken-world alpine-sdk gmp-dev automake libtool inotify-tools autoconf python3
+  npm install && \
+  npm run deploy && \
+  cd /app/apps/explorer/ && \
+  npm install && \
+  apk update && \
+  apk del --force-broken-world alpine-sdk gmp-dev automake libtool inotify-tools autoconf python3
 
 
 RUN apk add --update git make 

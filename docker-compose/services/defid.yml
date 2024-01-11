@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  defid:
+    image: defi/defichain:4.0.6
+    pull_policy: always
+    restart: always
+    stop_grace_period: 5m
+    container_name: "defid"
+    command: defid -blocksonly -rpcthreads=1 -rpcallowip="0.0.0.0/0" -rpcbind="0.0.0.0" -wsbind="0.0.0.0" -grpcbind="0.0.0.0" -ethrpcbind="0.0.0.0" -rpcuser=defid-user -rpcpassword=mfemrkn564kjnfg34
+    volumes:
+      - C:\\Users\\0ptim\\AppData\\Roaming\\DeFi Blockchain:/data
+      - ./sync-check.sh:/app/sync-check.sh
+    ports:
+      - "8554:8554"
