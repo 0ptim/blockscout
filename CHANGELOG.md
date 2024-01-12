@@ -5,6 +5,7 @@
 ### Features
 
 - [#9155](https://github.com/blockscout/blockscout/pull/9155) - Allow bypassing avg block time in proxy implementation re-fetch ttl calculation
+- [#9148](https://github.com/blockscout/blockscout/pull/9148) - Add `/api/v2/utils/decode-calldata`
 - [#9072](https://github.com/blockscout/blockscout/pull/9072) - Add tracing by block logic for geth
 - [#9056](https://github.com/blockscout/blockscout/pull/9056) - Noves.fi API proxy
 - [#9158](https://github.com/blockscout/blockscout/pull/9158) - Increase shared memory for PostgreSQL containers
